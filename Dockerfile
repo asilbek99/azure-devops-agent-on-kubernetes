@@ -35,6 +35,7 @@ WORKDIR /azp
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     unzip \
+    curl \
     apt-transport-https \
     software-properties-common
 
