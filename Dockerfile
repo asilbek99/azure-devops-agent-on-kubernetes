@@ -36,6 +36,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-transport-https \
     software-properties-common
 
+
+RUN apt-get update && apt-get install -y software-properties-common \
+    apt-add-repository --yes --update ppa:ansible/ansible \
+    curl -fsSL https://apt.releases.hashicorp.com/gpg |  apt-key add - \
+    apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+    apt-get install -y ansible jq vault
+
+
 #install yq
 RUN wget https://github.com/mikefarah/yq/releases/download/v4.40.7/yq_linux_amd64 \
     && mv ./yq_linux_amd64 /usr/bin/yq \
@@ -79,7 +87,7 @@ RUN apt-get update \
 RUN sudo chown -R azuredevops /azp
 RUN sudo chown -R azuredevops /home/azuredevops
 
-USER azuredevops
+#USER azuredevops
 
 # Create docker user group and utilize it
 RUN sudo groupadd docker
