@@ -40,10 +40,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common
 
 
-RUN apt-get update && apt-get install -y software-properties-common \
-    apt-add-repository --yes --update ppa:ansible/ansible \
-    curl -fsSL https://apt.releases.hashicorp.com/gpg |  apt-key add - \
-    apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+RUN apt-get update && apt-get install -y software-properties-common && \
+    apt-add-repository --yes --update ppa:ansible/ansible && \
+    curl -fsSL https://apt.releases.hashicorp.com/gpg |  apt-key add - && \
+    apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
     apt-get install -y ansible jq vault
 
 
