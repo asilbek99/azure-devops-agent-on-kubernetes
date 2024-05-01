@@ -32,7 +32,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}/azure-devops-agent:latest
+          tags: ghcr.io/${{ github.repository }}:latest
 
   build-and-push-helm:
     needs: build-and-push-docker
