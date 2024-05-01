@@ -51,8 +51,9 @@ jobs:
       - name: Package Helm Chart
         run: helm package ./chart --destination .
 
-      - name: Upload Helm chart to GitHub Packages
-        uses: helm/chart-releaser-action@v1.3.0
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.6.0
         with:
           charts_dir: .
-          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
