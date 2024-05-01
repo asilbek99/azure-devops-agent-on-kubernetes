@@ -49,10 +49,10 @@ jobs:
         uses: azure/setup-helm@v1
 
       - name: Package Helm Chart
-        run: helm package ./chart --destination ./helm-package
+        run: helm package ./chart --destination .
 
       - name: Upload Helm chart to GitHub Packages
         uses: helm/chart-releaser-action@v1.3.0
         with:
-          charts_dir: ./helm-package
+          charts_dir: .
           token: ${{ secrets.GITHUB_TOKEN }}
