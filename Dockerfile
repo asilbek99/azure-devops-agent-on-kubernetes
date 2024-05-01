@@ -97,5 +97,5 @@ RUN sudo chown -R azuredevops /home/azuredevops
 RUN sudo groupadd docker
 RUN sudo usermod -aG docker azuredevops
 RUN sudo newgrp docker
-
+RUN apt-get install --reinstall -y vault
 ENTRYPOINT ["./start.sh"]
